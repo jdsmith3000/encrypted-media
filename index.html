@@ -4755,7 +4755,7 @@ interface <span class="idlInterfaceID">MediaKeyMessageEvent</span> : <span class
     <p>For methods that return a promise, all errors are reported asynchronously by rejecting the returned Promise. This includes [<cite><a class="bibref" href="#bib-WebIDL">WebIDL</a></cite>] type mapping errors.</p>
     <p>The steps of an algorithm are always aborted when rejecting a promise.</p>
 
-    <pre class="idl"><span class="idlInterface" id="idl-def-HTMLMediaElement">partial interface <span class="idlInterfaceID">HTMLMediaElement</span> : <span class="idlSuperclass">EventTarget</span> {
+    <pre class="idl"><span class="idlInterface" id="idl-def-HTMLMediaElement">partial interface <span class="idlInterfaceID">HTMLMediaElement</span> {
 <span class="idlAttribute">    readonly        attribute <span class="idlAttrType"><a href="#idl-def-MediaKeys" class="idlType"><code>MediaKeys</code></a>?</span>   <span class="idlAttrName"><a href="#widl-HTMLMediaElement-mediaKeys">mediaKeys</a></span>;</span>
 <span class="idlAttribute">                    attribute <span class="idlAttrType">EventHandler</span> <span class="idlAttrName"><a href="#widl-HTMLMediaElement-onencrypted">onencrypted</a></span>;</span>
 <span class="idlAttribute">                    attribute <span class="idlAttrType">EventHandler</span> <span class="idlAttrName"><a href="#widl-HTMLMediaElement-onwaitingforkey">onwaitingforkey</a></span>;</span>

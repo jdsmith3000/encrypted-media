@@ -1,6 +1,6 @@
 (function() {
   var EME_spec_url = "https://www.w3.org/TR/encrypted-media/";
-  var HTML_spec_url = "https://www.w3.org/TR/html5/embedded-content-0.html";
+  var HTML_spec_url = "https://www.w3.org/TR/html51/semantics-embedded-content.html";
   var DOM_spec_url = "https://www.w3.org/TR/dom/";
   var IDL_spec_url = "https://www.w3.org/TR/WebIDL-1/";
 
@@ -36,15 +36,15 @@
   }
 
   function webappapis_helper(doc, df, id, text) {
-    link_helper(doc, df, 'https://www.w3.org/TR/html5/webappapis.html#' + id, text);
+    link_helper(doc, df, 'https://www.w3.org/TR/html51/webappapis.html#' + id, text);
   }
 
   function infrastructure_helper(doc, df, id, text) {
-    link_helper(doc, df, 'https://www.w3.org/TR/html5/infrastructure.html#' + id, text);
+    link_helper(doc, df, 'https://www.w3.org/TR/html51/infrastructure.html#' + id, text);
   }
 
   function browsers_helper(doc, df, id, text) {
-    link_helper(doc, df, 'https://www.w3.org/TR/html5/browsers.html#' + id, text);
+    link_helper(doc, df, 'https://www.w3.org/TR/html51/browsers.html#' + id, text);
   }
 
   function mixedcontent_helper(doc, df, id, text) {
@@ -105,18 +105,18 @@
   }
 
   function queue_and_fire_helper(doc, df, id, text) {
-    webappapis_helper(doc, df, 'queue-a-task', text);
+    webappapis_helper(doc, df, 'queuing', text);
     df.appendChild(doc.createTextNode(' to '));
-    webappapis_helper(doc, df, 'fire-a-simple-event', 'fire a simple event');
+    webappapis_helper(doc, df, 'firing-a-simple-event-named-e', 'fire a simple event');
     df.appendChild(doc.createTextNode(' named'));
   }
 
-    function queue_helper(doc, df, id, text) {
-    webappapis_helper(doc, df, 'queue-a-task', text);
+  function queue_helper(doc, df, id, text) {
+    webappapis_helper(doc, df, 'queuing', text);
   }
 
   function queue_and_fire_track_event_helper(doc, df, id, text) {
-    webappapis_helper(doc, df, 'queue-a-task', 'Queue a task');
+    webappapis_helper(doc, df, 'queuing', 'Queue a task');
     df.appendChild(doc.createTextNode(' to fire a '));
     infrastructure_helper(doc, df, 'concept-events-trusted', 'trusted event');
     df.appendChild(doc.createTextNode(' named '));
@@ -127,7 +127,7 @@
   }
 
   function queue_and_run_helper(doc, df, id, text) {
-    webappapis_helper(doc, df, 'queue-a-task', text);
+    webappapis_helper(doc, df, 'queuing', text);
     df.appendChild(doc.createTextNode(' to run the'));
   }
 
@@ -171,11 +171,13 @@
     'distinctive-identifier': { func: term_helper, fragment: 'distinctive-identifier', link_text: 'Distinctive Identifier'  },
     'distinctive-identifier-maybe-plural': { func: term_helper, fragment: 'distinctive-identifier', link_text: 'Distinctive Identifier(s)'  },
     'distinctive-identifiers': { func: term_helper, fragment: 'distinctive-identifier', link_text: 'Distinctive Identifiers'  },
+    'expiration-time': { func: term_helper, fragment: 'expiration-time', link_text: 'expiration time' },
     'browsing-profile': { func: term_helper, fragment: 'browsing-profile', link_text: 'browsing profile' },
     'record-of-license-destruction': { func: term_helper, fragment: 'record-of-license-destruction', link_text: 'record of license destruction'  },
     'records-of-license-destruction': { func: term_helper, fragment: 'record-of-license-destruction', link_text: 'records of license destruction'  },
     'record-of-license-destruction-maybe-plural': { func: term_helper, fragment: 'record-of-license-destruction', link_text: 'record(s) of license destruction'  },
     'time': { func: term_helper, fragment: 'time', link_text: 'time'  },
+    'valid-media-mime-type': { func: term_helper, fragment: 'valid-media-mime-type', link_text: 'valid media MIME type'  },
 
     'requestMediaKeySystemAccess': { func: idlref_helper, fragment: 'dom-navigator-requestmediakeysystemaccess', link_text: 'requestMediaKeySystemAccess()',  },
     'requestMediaKeySystemAccess-call': { func: idlref_helper, fragment: 'dom-navigator-requestmediakeysystemaccess', link_text: 'requestMediaKeySystemAccess',  },
@@ -283,25 +285,26 @@
     'eventdfn': { func: eventdfn_helper, fragment: '', link_text: '', },
     'event': { func: code_dom_helper, fragment: 'event', link_text: 'Event', },
 
-    'htmlmediaelement': { func: code_videoref_helper, fragment: 'htmlmediaelement', link_text: 'HTMLMediaElement',  },
+    'htmlmediaelement': { func: code_videoref_helper, fragment: 'htmlmediaelement-htmlmediaelement', link_text: 'HTMLMediaElement',  },
     'media-data': { func: videoref_helper, fragment: 'media-data', link_text: 'media data',  },
     'media-resource': { func: videoref_helper, fragment: 'media-resource', link_text: 'media resource',  },
-    'media-crossorigin': { func: code_videoref_helper, fragment: 'attr-media-crossorigin', link_text: 'crossorigin',  },
+    'media-crossorigin': { func: code_videoref_helper, fragment: 'element-attrdef-media-crossorigin', link_text: 'crossorigin',  },
     'mime-types': { func: videoref_helper, fragment: 'mime-types', link_text: 'MIME types',  },
+    'valid-mime-type': { func: infrastructure_helper, fragment: 'valid-mime-type', link_text: 'valid MIME type',  },
     'loading-the-media-resource': { func: videoref_helper, fragment: 'loading-the-media-resource', link_text: 'loading the media resource',  },
-    'resource-fetch-algorithm': { func: videoref_helper, fragment: 'concept-media-load-resource', link_text: 'resource fetch algorithm',  },
-    'current-playback-position': { func: videoref_helper, fragment: 'current-playback-position', link_text: 'current playback position',  },
+    'resource-fetch-algorithm': { func: videoref_helper, fragment: 'resource-fetch-algorithm', link_text: 'resource fetch algorithm',  },
+    'current-playback-position': { func: videoref_helper, fragment: 'current-position', link_text: 'current playback position',  },
     'blocked-media-element': { func: videoref_helper, fragment: 'blocked-media-element', link_text: 'blocked media element',  },
     'potentially-playing': { func: videoref_helper, fragment: 'potentially-playing', link_text: 'potentially playing',  },
     'direction-of-playback': { func: videoref_helper, fragment: 'direction-of-playback', link_text: 'direction of playback',  },
     'seeking': { func: videoref_helper, fragment: 'seeking', link_text: 'seeking',  },
-    'readystate': { func: code_videoref_helper, fragment: 'dom-media-readystate', link_text: 'readyState',  },
+    'readystate': { func: code_videoref_helper, fragment: 'dom-htmlmediaelement-readystate', link_text: 'readyState',  },
     'ready-states': { func: code_videoref_helper, fragment: 'ready-states', link_text: 'Ready States',  },
-    'have-metadata': { func: code_videoref_helper, fragment: 'dom-media-have_metadata', link_text: 'HAVE_METADATA',  },
-    'have-current-data': { func: code_videoref_helper, fragment: 'dom-media-have_current_data', link_text: 'HAVE_CURRENT_DATA',  },
-    'have-future-data': { func: code_videoref_helper, fragment: 'dom-media-have_future_data', link_text: 'HAVE_FUTURE_DATA',  },
-    'have-enough-data': { func: code_videoref_helper, fragment: 'dom-media-have_enough_data', link_text: 'HAVE_ENOUGH_DATA',  },
-    'canplaythrough': { func: code_videoref_helper, fragment: 'event-media-canplaythrough', link_text: 'canplaythrough',  },
+    'have-metadata': { func: code_videoref_helper, fragment: 'dom-htmlmediaelement-have_metadata', link_text: 'HAVE_METADATA',  },
+    'have-current-data': { func: code_videoref_helper, fragment: 'dom-htmlmediaelement-have_current_data', link_text: 'HAVE_CURRENT_DATA',  },
+    'have-future-data': { func: code_videoref_helper, fragment: 'dom-htmlmediaelement-have_future_data', link_text: 'HAVE_FUTURE_DATA',  },
+    'have-enough-data': { func: code_videoref_helper, fragment: 'dom-htmlmediaelement-have_enough_data', link_text: 'HAVE_ENOUGH_DATA',  },
+    'canplaythrough': { func: code_videoref_helper, fragment: 'eventdef-media-canplaythrough', link_text: 'canplaythrough',  },
     'timed-text-tracks': { func: code_videoref_helper, fragment: 'timed-text-tracks', link_text: 'timed text tracks',  },
 
     'media-data-is-corrupted': { func: videoref_helper, fragment: 'fatal-decode-error', link_text: 'media data is corrupted',  },
@@ -321,8 +324,8 @@
 
     'constructing-events': { func: dom_helper, fragment: 'constructing-events', link_text: 'Constructing events', },
     'document-concept': { func: dom_helper, fragment: 'concept-document', link_text: 'Document', },
-    'origin': { func: browsers_helper, fragment: 'origin-0', link_text: 'origin', },
-    'cors-same-origin': { func: infrastructure_helper, fragment: 'cors-same-origin', link_text: 'CORS-same-origin', },
+    'origin': { func: browsers_helper, fragment: 'concept-cross-origin', link_text: 'origin', },
+    'cors-same-origin': { func: browsers_helper, fragment: 'same-origin', link_text: 'CORS-same-origin', },
 
     'contributors': { func: contributors_helper, fragment: '', link_text: '', },
   };
@@ -436,6 +439,32 @@
    $("a[def-id]").each(function () {
        $(this).addClass('externalDFN');
      });
+     preElementMediaProcessor();
+  }
+
+  // The JS highlighter in respec removes all element before doing the highlight,
+  // so we need to replace the a element before the highlighter get there
+  function preElementMediaProcessor() {
+    var doc = document;
+    $("pre.example a[def-id]").each(function () {
+      var $ant = $(this);
+      var def_id = $ant.attr('def-id');
+      var info = definitionInfo[def_id];
+      if (info) {
+        var text = info.link_text;
+
+        var element_text = this.innerHTML;
+        if (element_text) {
+          text = element_text;
+        }
+        var span = doc.createElement("span");
+        span.innerHTML = text;
+        this.parentNode.replaceChild(span, this);
+
+      } else {
+        console.log("Found def-id '" + def_id + "' but it does not correspond to anything");
+      }
+    });
   }
 
   function encryptedMediaPostProcessor() {
@@ -566,7 +595,7 @@
     // THIS MUST BE LAST.
     // Check for duplicate ids.
     $("[id]").each(function () {
-      var elements = $("[id='" + this.id + "']");
+      var elements = $('[id="' + this.id.replace(/"/g,'\\"') + '"]');
       if (elements.length != 1) {
         console.error("id '" + this.id + "' is used for " + elements.length + " elements. This instance: ", this);
       }
